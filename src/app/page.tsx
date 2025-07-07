@@ -49,33 +49,33 @@ const externalLinks: Link[] = [
   {
     name: "LinkedIn",
     description: "follow my career",
-    url: "https://linkedin.com/in/lukeberrypi",
+    url: "https://linkedin.com/in/padilha--matheus",
     icon: <SiLinkedin className="fill-[#0077B5] dark:fill-zinc-300" />,
   },
   {
     name: "GitHub",
     description: "steal my code",
-    url: "https://github.com/lukeberrypi",
+    url: "https://github.com/Padilha1",
     icon: <SiGithub />,
   },
   {
     name: "YouTube",
-    description: "watch me talk",
-    url: "https://youtube.com/@lukeberrypi",
+    description: "where I talk about Occupational Safety",
+    url: "https://youtube.com/@s4inspec",
     icon: <SiYoutube className="fill-[#FF0032] dark:fill-zinc-300" />,
   },
   {
     name: "X (formerly Twitter)",
     description: "read my mind",
-    url: "https://x.com/lukeberrypi",
+    url: "https://x.com/Pa__dilha",
     icon: <XLogo />,
   },
-  {
-    name: "Get 10% OFF Raycast Pro",
-    description: "upgrade your workflow",
-    url: "https://www.raycast.com/pro?via=lukeberrypi",
-    icon: <RaycastLogo />,
-  },
+  // {
+  //   name: "Get 10% OFF Raycast Pro",
+  //   description: "upgrade your workflow",
+  //   url: "https://www.raycast.com/pro?via=lukeberrypi",
+  //   icon: <RaycastLogo />,
+  // },
 ];
 
 const ExternalLink = (link: Link) => {
@@ -101,9 +101,10 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-6">
       <p className="text-sm">
-        London-based Brazilian obsessed with UI for a decade. Working as a
-        Software Engineer for half that time. I love Raycast, TailwindCSS,
-        DJing, playing football, and creating pretty websites.
+        Brazilian Software Engineer passionate about clean UI, smart
+        architecture, coffee, and solving real problems. I love design systems,
+        build new solutions and the challenge of turning complexity into
+        simplicity.
       </p>
       <div className="divide-y divide-zinc-400 overflow-hidden rounded ring-1 ring-zinc-400 dark:divide-zinc-500 dark:ring-zinc-500">
         {externalLinks.map((link: Link) => (
@@ -113,29 +114,29 @@ export default function HomePage() {
       <div className="flex justify-center gap-y-6 max-sm:flex-col-reverse sm:justify-between">
         <div className="flex flex-col justify-center gap-y-5 max-sm:items-center">
           <div className="sm:group relative -m-8 flex items-center gap-3 p-8 transition-all">
-            lukeberrypi@gmail.com
+            padilha.matheus@hotmail.com
             <div className="inline-flex items-center gap-3 transition-all sm:absolute sm:right-4 sm:opacity-0 sm:group-hover:right-1 sm:group-hover:opacity-100">
               {/* TODO add copy email
                 <button className="text-zinc-800 sm:group-hover:inline-flex dark:text-zinc-300">
                 <Copy className="size-4" />
               </button> */}
               <a
-                href="mailto:lukeberrypi@gmail.com"
+                href="mailto:padilha.matheus@hotmail.com"
                 className="text-zinc-800 dark:text-zinc-300"
               >
                 <Send className="size-4" />
               </a>
             </div>
           </div>
-          <span className="-mt-2 flex w-fit items-center gap-1.5 rounded-full bg-green-100 px-2 py-0.5 text-sm text-green-600 ring-1 ring-green-500 dark:bg-transparent dark:text-emerald-500 dark:ring-emerald-500">
+          {/* <span className="-mt-2 flex w-fit items-center gap-1.5 rounded-full bg-green-100 px-2 py-0.5 text-sm text-green-600 ring-1 ring-green-500 dark:bg-transparent dark:text-emerald-500 dark:ring-emerald-500">
             <div className="size-2 animate-pulse rounded-full bg-green-500 dark:bg-emerald-500" />
             Online
-          </span>
+          </span> */}
         </div>
         <div className="flex flex-col gap-2">
           <a
-            href="/luke-berry-cv.pdf"
-            download="Luke-Berry-CV.pdf"
+            href="/resume_matheus.pdf"
+            download="Matheus-Padilha-CV.pdf"
             className="flex flex-row items-center justify-center gap-3 rounded bg-sky-300 p-4 text-sky-800 ring-1 ring-sky-500 transition-all sm:hover:bg-sky-400 dark:bg-inherit dark:text-sky-500 dark:ring-sky-500 sm:sm:dark:hover:bg-zinc-800"
           >
             <span className="text-nowrap">Download my CV</span>

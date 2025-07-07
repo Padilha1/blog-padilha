@@ -1,86 +1,64 @@
 export default function AboutPage() {
   return (
     <>
-      <h1 className="mb-16 mt-4 text-center max-sm:text-4xl text-5xl">About me</h1>
+      <h1 className="mb-16 mt-4 text-center text-5xl max-sm:text-4xl">
+        About me
+      </h1>
       <article>
         <p>
-          I was born in São Paulo and moved to{" "}
-          <a href="https://en.wikipedia.org/wiki/Florian%C3%B3polis">
-            Florianópolis
-          </a>{" "}
-          as a 10 year old kid. I fell in love with the nature, sport and music
-          culture of the Magical Island.
+          I was born in Paranaguá, a coastal city in southern Brazil, but moved
+          to{" "}
+          <a href="https://en.wikipedia.org/wiki/Ponta_Grossa">Ponta Grossa</a>{" "}
+          when I was 6 years old. That`s where I grew up, and where I still live
+          today.
         </p>
         <p>
-          In the next decade, I{" "}
-          <a href="https://open.spotify.com/artist/4ymHKBTThfeOL114lwCWPQ?si=c30897c35e404259">
-            became a singer-songwriter
+          I&apos;ve always been curious about how things work, especially when
+          they&apos;re <em>not</em> working. That curiosity led me to study{" "}
+          <a href="https://www.uepg.br/">
+            Software Engineering at the State University of Ponta Grossa (UEPG)
           </a>
-          , got a Karate blue belt, won back-to-back Carnavals with a samba
-          school and wasted thousands of hours playing League of Legends.
+          , where I fell in love with building digital tools that solve real
+          problems.
         </p>
         <p>
-          Then I studied Economics at{" "}
-          <a href="https://en.wikipedia.org/wiki/Federal_University_of_Santa_Catarina">
-            Federal University of Santa Catarina
-          </a>
-          , mostly for my love for History and Math. I learned a lot of
-          Politics, Statistics and Macroeconomics.
+          During college, I had the opportunity to work on systems far beyond
+          the classic CRUD. From inspection platforms that reduce paper waste in
+          industrial safety routines, to dashboards powered by real-time data —
+          I discovered how much I enjoy turning complexity into simple, clean
+          interfaces.
         </p>
         <p>
-          But I&apos;d spent too long studying models that weren&apos;t applicable in
-          real-life. I felt disconnected from my studies which
-          led to me dropping out after 2 years.
+          Most of my recent work revolves around <strong>React</strong>,{" "}
+          <strong>TypeScript</strong>, <strong>Fastify</strong> and{" "}
+          <strong>MySQL</strong>, but I’m always reaching for something new. I’m
+          not just looking for tasks — I’m looking for challenges. Design
+          systems? Performance? Automation? Bring it on.
         </p>
         <p>
-          Then came my first contact with programming: as a Data Analyst at a
-          Tech startup. We used Microsoft Excel and Power BI to generate our
-          reports.
+          I speak English fluently (C1) and I’m currently studying German as I
+          prepare to expand my career internationally — especially in countries
+          that value good software, good architecture, and good coffee.
         </p>
         <p>
-          With millions of data entries, it wasn&apos;t long until my Dell
-          notebook became unusably slow. This led me to learn Python and Pandas
-          to better deal with datasets, as well as Selenium and pyautogui.
-        </p>
-        <p>
-          I&apos;ve always been obsessed with user interfaces. My friends
-          couldn&apos;t bear me pointing out broken buttons and ugly websites
-          all the time.
-        </p>
-        <p>
-          When I found out what HTML was, I did a deep dive into the Frontend. I
-          completed FreeCodeCamp&apos;s{" "}
-          <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/">
-            Responsive Web Design
-          </a>{" "}
-          and swiftly progressed to Javascript and React soon after.
-        </p>
-        <p>
-          I became more active within the Brazilian Dev community, sharing
-          quirky UI bugs and building my projects in public such as{" "}
-          <a href="https://phived.com">phived</a> and{" "}
-          <a href="https://css2wind.com">css2wind</a>. I collaborated with
-          hundreds of developers and contributed a lot to Open Source.
-        </p>
-        <p>
-          In 2024, I traveled to Torino, Italy to visit my dad. My life flipped
-          upside down and I ended up living in Málaga for a while. After I{" "}
-          <a href="/articles/how-not-to-get-a-job-in-spain">
-            failed to get a job
-          </a>
-          , I moved to the UK and landed a job in London, where I currently
-          live.
+          If you&apos;re building something meaningful and need someone who
+          genuinely cares about the end-user experience and the engineering
+          behind it, feel free to reach out. I’d love to be part of something
+          that makes tech <em>actually</em> useful.
         </p>
         <p>
           If you want to get in touch, send me a DM on{" "}
-          <a href="https://x.com/lukeberrypi">X</a> or an email{" "}
-          <a href="mailto:lukeberrypi@gmail.com">lukeberrypi@gmail.com</a>.
+          <a href="https://x.com/Pa__dilha">X</a> or an email{" "}
+          <a href="mailto:padilha.matheus@hotmail.com">
+            padilha.matheus@hotmail.com
+          </a>
+          .
         </p>
         <p>Smile, you&apos;re alive :)</p>
         <p>
-          Best,
+          Kind Regards,
           <br />
-          Luke
+          Padilha
         </p>
       </article>
     </>
