@@ -1,9 +1,30 @@
 "use client";
 
-import { ChevronLeft, Moon, Sun, Triangle } from "lucide-react";
+import { ChevronLeft, Languages, Moon, Sun, Triangle } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
+type Locale = "pt-BR" | "en";
+
+const DEFAULT_LOCALE: Locale = "pt-BR";
+
+const labels = {
+  "pt-BR": {
+    role: "Engenheiro de Software",
+    projects: "/projetos",
+    about: "/sobre",
+    toggleLanguage: "Switch to English",
+    nextLocale: "en",
+  },
+  en: {
+    role: "Software Engineer",
+    projects: "/projects",
+    about: "/about",
+    toggleLanguage: "Mudar para português",
+    nextLocale: "pt-BR",
+  },
+} as const;
 
 function isThemeSetToDark() {
   if (window == undefined) return;
@@ -15,12 +36,29 @@ function isThemeSetToDark() {
   );
 }
 
+function getCookie(name: string) {
+  return document.cookie
+    .split("; ")
+    .find((cookie) => cookie.startsWith(`${name}=`))
+    ?.split("=")[1];
+}
+
+function getStoredLocale(): Locale {
+  const locale = getCookie("locale");
+
+  return locale === "en" || locale === "pt-BR" ? locale : DEFAULT_LOCALE;
+}
+
 export default function Header() {
   const path = usePathname();
+  const router = useRouter();
   const isHome = path === "/";
   const [isDarkMode, setIsDarkMode] = useState(isThemeSetToDark());
+  const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE);
 
   useEffect(() => {
+    setLocale(getStoredLocale());
+
     if (isThemeSetToDark()) {
       document.documentElement.classList.add("dark");
     } else {
@@ -40,6 +78,15 @@ export default function Header() {
     }
   };
 
+  const toggleLanguage = () => {
+    const nextLocale = labels[locale].nextLocale;
+
+    document.cookie = `locale=${nextLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    document.documentElement.lang = nextLocale.toLowerCase();
+    setLocale(nextLocale);
+    router.refresh();
+  };
+
   return (
     <header className="mx-auto max-w-prose py-8 max-sm:pt-4">
       <nav className="flex items-center justify-between max-sm:flex-col max-sm:gap-6">
@@ -48,7 +95,7 @@ export default function Header() {
             <div className="flex flex-col max-sm:items-center">
               Matheus Padilha
               <span className="text-zinc-500 dark:text-zinc-400">
-                Software Engineer
+                {labels[locale].role}
               </span>
             </div>
           </div>
@@ -63,7 +110,7 @@ export default function Header() {
             <div className="flex flex-col max-sm:items-center">
               Matheus Padilha
               <span className="text-zinc-500 dark:text-zinc-400">
-                Software Engineer
+                {labels[locale].role}
               </span>
             </div>
           </Link>
@@ -79,12 +126,20 @@ export default function Header() {
               <Sun className="size-5 fill-yellow-300 transition-all sm:hover:rotate-45 sm:hover:scale-110" />
             )}
           </button>
+          <button
+            aria-label={labels[locale].toggleLanguage}
+            title={labels[locale].toggleLanguage}
+            onClick={() => toggleLanguage()}
+            className="group relative flex items-center rounded px-1 py-px ring-1 ring-sky-500 ring-opacity-0 transition-all sm:hover:ring-opacity-100 dark:ring-sky-600 dark:ring-opacity-0"
+          >
+            <Languages className="size-5 transition-all sm:group-hover:scale-110" />
+          </button>
           <Link
             className="group relative rounded px-2 py-px ring-1 ring-sky-500 ring-opacity-0 transition-all sm:hover:ring-opacity-100 dark:ring-sky-600 dark:ring-opacity-0"
             href="/projects"
             data-is-current-path={path === "/projects"}
           >
-            /projects
+            {labels[locale].projects}
             <Triangle className="absolute left-1/2 mt-1 hidden size-2 fill-sky-500 text-zinc-800 group-data-[is-current-path=true]:block dark:fill-sky-600 dark:text-transparent" />
           </Link>
           {/* <Link
@@ -100,7 +155,7 @@ export default function Header() {
             href="/about"
             data-is-current-path={path === "/about"}
           >
-            /about
+            {labels[locale].about}
             <Triangle className="absolute left-1/2 mt-1 hidden size-2 fill-sky-500 text-zinc-800 group-data-[is-current-path=true]:block dark:fill-sky-600 dark:text-transparent" />
           </Link>
         </div>

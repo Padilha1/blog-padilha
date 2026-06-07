@@ -62,10 +62,17 @@ export function getArticles() {
   });
 }
 
-export async function getArticleData(id: string) {
+function parseDate(date: string) {
+  return new Date(`${date}T12:00:00`);
+}
+
+export async function getArticleData(id: string, locale = "en") {
   const fullPath = path.join(ARTICLES_DIR, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
   const matterResult = matter(fileContents);
+  const date = moment(matterResult.data.date, "YYYY-MM-DD").format(
+    "YYYY-MM-DD",
+  );
   const processedContent = await remark()
     .use(html)
     .process(matterResult.content);
@@ -76,6 +83,10 @@ export async function getArticleData(id: string) {
     contentHtml,
     title: matterResult.data.title,
     tags: matterResult.data.tags || [],
-    date: moment(matterResult.data.date, "YYYY-MM-DD").format("MMMM  Do, YYYY"),
+    date: new Intl.DateTimeFormat(locale, {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(parseDate(date)),
   };
 }

@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Karla } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 import { ScrollToTop } from "../components/scroll-to-top";
 import Script from "next/script";
 import dynamic from "next/dynamic";
 import { Analytics } from "@vercel/analytics/next";
+import { getDictionary, getLocale } from "../lib/i18n";
 
 export const metadata: Metadata = {
   title: "Matheus Padilha",
-  description: "Matheus Padilha's personal website",
+  description: "Site pessoal de Matheus Padilha",
 };
 
 const karla = Karla({
@@ -25,8 +25,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const locale = getLocale();
+  const dictionary = getDictionary(locale);
+
   return (
-    <html lang="en" className="min-h-screen">
+    <html lang={locale.toLowerCase()} className="min-h-screen">
       <body className={`${karla.className} min-h-full px-6`}>
         <Analytics />
         <Script id="theme-toggle" strategy="afterInteractive">
@@ -46,7 +49,7 @@ export default function RootLayout({
               href="https://github.com/Padilha1/blog-padilha"
               target="_blank"
             >
-              Code
+              {dictionary.footer.code}
             </a>
             {/* <Link
               className="decoration-zinc-500 underline-offset-4 transition-all sm:hover:underline dark:decoration-zinc-400"
@@ -64,7 +67,7 @@ export default function RootLayout({
             </a>
           </div>
           <blockquote className="text-zinc-800 dark:text-zinc-300">
-            Smile, you&apos;re alive :)
+            {dictionary.footer.quote}
           </blockquote>
         </footer>
       </body>

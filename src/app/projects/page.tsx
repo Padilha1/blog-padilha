@@ -1,6 +1,7 @@
-import { GitBranch, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { getDictionary } from "../../lib/i18n";
 
 interface Project {
   name: string;
@@ -11,71 +12,96 @@ interface Project {
   technologies: ReactNode;
 }
 
-const projects: Project[] = [
-  {
-    name: "S4 Institutional Website",
-    description:
-      "Institutional website for clients to learn about the company, featuring an admin dashboard for managing equipment, employees's trainings, and soon, online courses.",
-    url: "https://s4treinamentos.com.br",
-    imageUrl: "/projects/s4treinamentos.png",
-    // githubUrl: "https://github.com/LukeberryPi/css2wind",
-    technologies: (
-      <div className="flex items-center gap-x-3">
-        <span className="rounded-full bg-[#007ACC] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
-          TypeScript
-        </span>
-        <span className="rounded-full bg-[#38BDF9] px-2.5 py-0.5 text-sm text-zinc-900 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
-          TailwindCSS
-        </span>
-        <span className="rounded-full bg-black px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
-          Next.js
-        </span>
-      </div>
-    ),
-  },
-  {
-    name: "S4 App",
-    description:
-      "S4 Inspec is a mobile application for asset management and safety inspections in industrial environments. It uses QR Codes to simplify asset mapping and provides a public URL where the current status of each asset can be viewed in real time.",
-    url: "https://s4treinamentos.com.br",
-    imageUrl: "/projects/s4treinamentos.png",
-    // githubUrl: "https://github.com/LukeberryPi/css2wind",
-    technologies: (
-      <div className="flex items-center gap-x-3">
-        <span className="rounded-full bg-[#5fbfff] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
-          React Native
-        </span>
-        <span className="rounded-full bg-[#1f8428] px-2.5 py-0.5 text-sm text-zinc-300 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
-          Node.js
-        </span>
-      </div>
-    ),
-  },
-  {
-    name: "Routini",
-    description:
-      "A modern scheduling system designed to simplify service bookings. Routini allows clients to choose services, professionals, and available time slots through a step-by-step interface. It also features an admin dashboard for managing appointments, services, and staff in real time.",
-    url: "https://routini.com.br",
-    imageUrl: "/projects/routini.png",
-    // githubUrl: "https://github.com/LukeberryPi/phived",
-    technologies: (
-      <div className="flex items-center gap-x-3">
-        <span className="rounded-full bg-[#00D8FE] px-2.5 py-0.5 text-sm text-zinc-900 dark:bg-inherit dark:text-inherit dark:ring-1 dark:ring-zinc-500">
-          React
-        </span>
-        <span className="rounded-full bg-[#007ACC] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
-          TypeScript
-        </span>
-        <span className="rounded-full bg-[#38BDF9] px-2.5 py-0.5 text-sm text-zinc-900 dark:bg-inherit dark:text-inherit dark:ring-1 dark:ring-zinc-500">
-          TailwindCSS
-        </span>
-        <span className="rounded-full bg-gradient-to-r from-[#926AFE] to-[#49C7FF] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-none dark:ring-1 dark:ring-zinc-500">
-          Vite
-        </span>
-      </div>
-    ),
-  },
-];
+function getProjects(): Project[] {
+  const dictionary = getDictionary();
+  const items = dictionary.projects.items;
+
+  return [
+    {
+      name: items.s4Institutional.name,
+      description: items.s4Institutional.description,
+      url: "https://s4treinamentos.com.br",
+      imageUrl: "/projeto1.webp",
+      // githubUrl: "https://github.com/LukeberryPi/css2wind",
+      technologies: (
+        <div className="flex items-center gap-x-3">
+          <span className="rounded-full bg-[#007ACC] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
+            TypeScript
+          </span>
+          <span className="rounded-full bg-[#38BDF9] px-2.5 py-0.5 text-sm text-zinc-900 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
+            TailwindCSS
+          </span>
+          <span className="rounded-full bg-gradient-to-r from-[#926AFE] to-[#49C7FF] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-none dark:ring-1 dark:ring-zinc-500">
+            Vite
+          </span>
+        </div>
+      ),
+    },
+    {
+      name: items.s4Training.name,
+      description: items.s4Training.description,
+      url: "https://s4treinamentos.com.br/gestao-treinamentos",
+      imageUrl: "/projeto2.webp",
+      // githubUrl: "https://github.com/LukeberryPi/css2wind",
+      technologies: (
+        <div className="flex items-center gap-x-3">
+          <span className="rounded-full bg-[#5fbfff] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
+            React.js
+          </span>
+          <span className="rounded-full bg-[#1f8428] px-2.5 py-0.5 text-sm text-zinc-300 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
+            Node.js
+          </span>
+          <span className="rounded-full bg-gradient-to-r from-[#926AFE] to-[#49C7FF] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-none dark:ring-1 dark:ring-zinc-500">
+            Vite
+          </span>
+        </div>
+      ),
+    },
+    {
+      name: items.facilities.name,
+      description: items.facilities.description,
+      url: "https://amicord.com",
+      imageUrl: "/projeto3.webp",
+      // githubUrl: "https://github.com/LukeberryPi/phived",
+      technologies: (
+        <div className="flex items-center gap-x-3">
+          <span className="rounded-full bg-gradient-to-r from-[#926AFE] to-[#49C7FF] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-none dark:ring-1 dark:ring-zinc-500">
+            Vite
+          </span>
+          <span className="rounded-full bg-[#007ACC] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
+            TypeScript
+          </span>
+          <span className="rounded-full bg-[#1f8428] px-2.5 py-0.5 text-sm text-zinc-300 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
+            Go
+          </span>
+        </div>
+      ),
+    },
+    {
+      name: items.routini.name,
+      description: items.routini.description,
+      url: "https://routini.com.br",
+      imageUrl: "/projects/routini.png",
+      // githubUrl: "https://github.com/LukeberryPi/phived",
+      technologies: (
+        <div className="flex items-center gap-x-3">
+          <span className="rounded-full bg-[#00D8FE] px-2.5 py-0.5 text-sm text-zinc-900 dark:bg-inherit dark:text-inherit dark:ring-1 dark:ring-zinc-500">
+            React
+          </span>
+          <span className="rounded-full bg-[#007ACC] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-inherit dark:text-zinc-300 dark:ring-1 dark:ring-zinc-500">
+            TypeScript
+          </span>
+          <span className="rounded-full bg-[#38BDF9] px-2.5 py-0.5 text-sm text-zinc-900 dark:bg-inherit dark:text-inherit dark:ring-1 dark:ring-zinc-500">
+            TailwindCSS
+          </span>
+          <span className="rounded-full bg-gradient-to-r from-[#926AFE] to-[#49C7FF] px-2.5 py-0.5 text-sm text-zinc-100 dark:bg-none dark:ring-1 dark:ring-zinc-500">
+            Vite
+          </span>
+        </div>
+      ),
+    },
+  ];
+}
 
 function ProjectCard({
   name,
@@ -84,7 +110,8 @@ function ProjectCard({
   // githubUrl,
   url,
   technologies,
-}: Project) {
+  visitWebsite,
+}: Project & { visitWebsite: string }) {
   return (
     <div className="flex-col divide-y divide-zinc-400 overflow-hidden rounded ring-1 ring-zinc-400 dark:divide-zinc-500 dark:ring-zinc-500">
       <div className="flex items-center justify-between gap-4 p-4 max-sm:flex-col">
@@ -94,14 +121,14 @@ function ProjectCard({
       <div>
         <p className="p-4">{description}</p>
       </div>
-      <Image src={imageUrl} width={620} height={324} alt="Logo for CSS2wind" />
+      <Image src={imageUrl} width={620} height={324} alt={name} />
       <div className="flex w-full justify-between divide-x divide-zinc-400 dark:divide-zinc-500">
         <a
           href={url}
           target="_blank"
           className="flex grow items-center justify-center gap-2 py-4 transition-all sm:hover:bg-zinc-100 sm:dark:hover:bg-zinc-800"
         >
-          <Globe className="size-4" /> Visit website
+          <Globe className="size-4" /> {visitWebsite}
         </a>
         {/* <a
           href={githubUrl}
@@ -116,14 +143,21 @@ function ProjectCard({
 }
 
 export default function ProjectsPage() {
+  const dictionary = getDictionary();
+  const projects = getProjects();
+
   return (
     <>
       <h1 className="mb-16 mt-4 text-center text-5xl max-sm:text-4xl">
-        Projects
+        {dictionary.projects.title}
       </h1>
       <div className="space-y-20">
         {projects.map((project) => (
-          <ProjectCard key={project.url} {...project} />
+          <ProjectCard
+            key={project.name}
+            visitWebsite={dictionary.projects.visitWebsite}
+            {...project}
+          />
         ))}
       </div>
     </>

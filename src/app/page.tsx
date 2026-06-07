@@ -3,9 +3,10 @@ import {
   SiLinkedin,
   SiYoutube,
 } from "@icons-pack/react-simple-icons";
-import { ArrowUpRight, Copy, Download, Send } from "lucide-react";
+import { ArrowUpRight, Copy, Download, Globe, Send } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { getDictionary } from "../lib/i18n";
 
 const XLogo = () => {
   return (
@@ -45,39 +46,6 @@ interface Link {
   icon?: ReactNode;
 }
 
-const externalLinks: Link[] = [
-  {
-    name: "LinkedIn",
-    description: "follow my career",
-    url: "https://linkedin.com/in/padilha--matheus",
-    icon: <SiLinkedin className="fill-[#0077B5] dark:fill-zinc-300" />,
-  },
-  {
-    name: "GitHub",
-    description: "steal my code",
-    url: "https://github.com/Padilha1",
-    icon: <SiGithub />,
-  },
-  {
-    name: "YouTube",
-    description: "where I talk about Occupational Safety",
-    url: "https://youtube.com/@s4inspec",
-    icon: <SiYoutube className="fill-[#FF0032] dark:fill-zinc-300" />,
-  },
-  {
-    name: "X (formerly Twitter)",
-    description: "read my mind",
-    url: "https://x.com/Pa__dilha",
-    icon: <XLogo />,
-  },
-  // {
-  //   name: "Get 10% OFF Raycast Pro",
-  //   description: "upgrade your workflow",
-  //   url: "https://www.raycast.com/pro?via=lukeberrypi",
-  //   icon: <RaycastLogo />,
-  // },
-];
-
 const ExternalLink = (link: Link) => {
   return (
     <a
@@ -98,14 +66,49 @@ const ExternalLink = (link: Link) => {
 };
 
 export default function HomePage() {
+  const dictionary = getDictionary();
+  const externalLinks: Link[] = [
+    {
+      name: "LinkedIn",
+      description: dictionary.home.links.linkedin,
+      url: "https://linkedin.com/in/padilha--matheus",
+      icon: <SiLinkedin className="fill-[#0077B5] dark:fill-zinc-300" />,
+    },
+    {
+      name: "GitHub",
+      description: dictionary.home.links.github,
+      url: "https://github.com/Padilha1",
+      icon: <SiGithub />,
+    },
+    {
+      name: "YouTube",
+      description: dictionary.home.links.youtube,
+      url: "https://youtube.com/@s4inspec",
+      icon: <SiYoutube className="fill-[#FF0032] dark:fill-zinc-300" />,
+    },
+    {
+      name: "S4 Treinamentos",
+      description: dictionary.home.links.s4,
+      url: "https://s4treinamentos.com.br/gestao-treinamentos",
+      icon: <Globe className="text-sky-600 dark:text-zinc-300" />,
+    },
+    {
+      name: "X (formerly Twitter)",
+      description: dictionary.home.links.x,
+      url: "https://x.com/Pa__dilha",
+      icon: <XLogo />,
+    },
+    // {
+    //   name: "Get 10% OFF Raycast Pro",
+    //   description: "upgrade your workflow",
+    //   url: "https://www.raycast.com/pro?via=lukeberrypi",
+    //   icon: <RaycastLogo />,
+    // },
+  ];
+
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-sm">
-        Brazilian Software Engineer passionate about clean UI, smart
-        architecture, coffee, and solving real problems. I love design systems,
-        build new solutions and the challenge of turning complexity into
-        simplicity.
-      </p>
+      <p className="text-sm">{dictionary.home.intro}</p>
       <div className="divide-y divide-zinc-400 overflow-hidden rounded ring-1 ring-zinc-400 dark:divide-zinc-500 dark:ring-zinc-500">
         {externalLinks.map((link: Link) => (
           <ExternalLink key={link.url} {...link} />
@@ -139,7 +142,7 @@ export default function HomePage() {
             download="Matheus-Padilha-CV.pdf"
             className="flex flex-row items-center justify-center gap-3 rounded bg-sky-300 p-4 text-sky-800 ring-1 ring-sky-500 transition-all sm:hover:bg-sky-400 dark:bg-inherit dark:text-sky-500 dark:ring-sky-500 sm:sm:dark:hover:bg-zinc-800"
           >
-            <span className="text-nowrap">Download my CV</span>
+            <span className="text-nowrap">{dictionary.home.cv}</span>
             <Download className="size-5 max-sm:hidden" />
           </a>
         </div>

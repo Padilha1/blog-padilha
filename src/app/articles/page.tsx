@@ -1,13 +1,17 @@
 import { Article, getArticles } from "@/src/lib/articles";
-import moment from "moment";
+import { getDictionary } from "@/src/lib/i18n";
 import Link from "next/link";
 // import { Tag } from "./[slug]/page";
 
 export default async function ArticlesPage() {
+  const dictionary = getDictionary();
   const articles = getArticles();
+
   return (
     <div>
-      <h1 className="mb-16 mt-4 text-center max-sm:text-4xl text-5xl">Articles</h1>
+      <h1 className="mb-16 mt-4 text-center text-5xl max-sm:text-4xl">
+        {dictionary.articles.title}
+      </h1>
 
       {/* TODO: add tags filter (OR between all selections)
       <p>{JSON.stringify(getAllTags())}</p> */}
@@ -28,7 +32,10 @@ export default async function ArticlesPage() {
               </span>
             </div>
             <span className="text-zinc-500 max-sm:text-sm dark:text-zinc-400">
-              {moment(article.date, "YYYY-MM-DD").format("MMM/YYYY")}
+              {new Intl.DateTimeFormat(dictionary.articles.dateLocale, {
+                month: "short",
+                year: "numeric",
+              }).format(new Date(`${article.date}T12:00:00`))}
             </span>
           </Link>
         ))}

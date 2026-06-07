@@ -1,4 +1,5 @@
 import { getArticleData } from "@/src/lib/articles";
+import { getDictionary } from "@/src/lib/i18n";
 import { Article } from "../../../components/article";
 
 function Tag({ tag }: { tag: string }) {
@@ -14,7 +15,11 @@ export default async function ArticlePage({
 }: {
   params: { slug: string };
 }) {
-  const articleData = await getArticleData(params.slug);
+  const dictionary = getDictionary();
+  const articleData = await getArticleData(
+    params.slug,
+    dictionary.articles.articleDateLocale,
+  );
 
   return (
     <>
