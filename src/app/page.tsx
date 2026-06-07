@@ -3,7 +3,7 @@ import {
   SiLinkedin,
   SiYoutube,
 } from "@icons-pack/react-simple-icons";
-import { ArrowUpRight, Copy, Download, Globe, Send } from "lucide-react";
+import { ArrowUpRight, Download, Globe, Send } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { getDictionary } from "../lib/i18n";
@@ -117,7 +117,17 @@ export default function HomePage() {
       <div className="flex justify-center gap-y-6 max-sm:flex-col-reverse sm:justify-between">
         <div className="flex flex-col justify-center gap-y-5 max-sm:items-center">
           <div className="sm:group relative -m-8 flex items-center gap-3 p-8 transition-all">
-            padilha.matheus@hotmail.com
+            <div className="flex flex-col">
+              <span>padilha.matheus@hotmail.com</span>
+              <a
+                href="https://wa.me/5542999538441"
+                target="_blank"
+                rel="noreferrer"
+                className="w-fit text-zinc-800 underline  underline-offset-4 dark:text-zinc-300 "
+              >
+                (42) 9 9953-8441
+              </a>
+            </div>
             <div className="inline-flex items-center gap-3 transition-all sm:absolute sm:right-4 sm:opacity-0 sm:group-hover:right-1 sm:group-hover:opacity-100">
               {/* TODO add copy email
                 <button className="text-zinc-800 sm:group-hover:inline-flex dark:text-zinc-300">
